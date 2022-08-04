@@ -1,0 +1,164 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col head-title">
+      <b><h3>ข่าวประชาสัมพันธ์</h3></b>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" style="margin-left: 90%;">
+      <button class="button" style="border: 1px solid #51bda3; border-radius: 8px;  padding: 5px 15px; background-color: #51bda3; color: white;" ><i class="fa-solid fa-circle-plus"></i>  เพิ่มข่าว</button>
+    </div>
+  </div>
+  <div class="row head-title">
+    <div class="col ms-5">
+      <b><h5>รายการข่าวประชาสัมพันธ์</h5></b>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+          <div class="rounded row " style=" background-color: #b5c8fa; padding: 15px 15px;border: 1px solid #b5c8fa; border-radius: 30px; text-align: center; box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+            <div class="col-1">
+
+            </div>
+            <div class="col-1">
+              <b>ลำดับ</b>
+            </div>
+            <div class="col">
+              <b>ชื่อเรื่อง</b>
+            </div>
+            <div class="col-2">
+              <b>วันที่สร้าง</b>
+            </div>
+            <div class="col-3">
+              <b>จัดการ</b>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let list of newsList">
+          <div class="row mt-2" style="padding: 10px 15px; box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;">
+            <div class="col-1" style="width: 110px;">
+              <div class="form-check form-switch" style="margin-left: 45%;">
+                <input class="form-check-input switch" type="checkbox" id="flexSwitchCheckDefault" [checked]="list.Status" (change)="callUpdate(3,list.NewsId,list.Status)">
+              </div>
+            </div>
+            <div class="col-1" style="text-align: center;">
+              {{ list.NewsId }}
+            </div>
+            <div class="col">
+              {{ list.NameNews }}
+            </div>
+            <div class="col-2" style="text-align: center;">
+              <span>{{ list.UpdatedDate | date: 'dd/MM/yyyy'}}</span>
+            </div>
+            <div class="col-3" style="text-align: center;">
+              <div class="row justify-content-center">
+                <div class="col">
+                  <i class="fa-solid fa-file-circle-exclamation me-3 icon-radius icon-light-blue icon-dark-them" *ngIf="list.ButtonView == 1" (click)="parentModal.show();checkNumberNewsForModal(list.NewsId,list.NameNews,list.Detail,list.Status);"></i>
+               
+              
+                <i class="fa-solid fa-pen-to-square me-3 icon-radius icon-light-them icon-hover-shadow" *ngIf="list.ButtonEdit == 1"></i>
+              
+               
+                <i class="fa-solid fa-trash-can icon-radius icon-red icon-dark-them " *ngIf="list.ButtonDelete == 1"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <br>
+    <div class="d-flex">
+      <div class="dropdown me-3" style="width: 80px;">
+          <button class="select-data-count-btn dropdown-toggle d-flex justify-content-between align-items-center "
+              type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              10
+              <i class="fa-solid fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">5</a></li>
+              <li><a class="dropdown-item" href="#">10</a></li>
+              <li><a class="dropdown-item" href="#">15</a></li>
+          </ul>
+      </div>
+      <nav aria-label="Page navigation example">
+          <ul class="pagination">
+              <li class="page-item">
+                  <a class="page-link" aria-label="Previous">
+                      <span aria-hidden="true">&lt;&lt;</span>
+                  </a>
+              </li>
+              <li class="page-item">
+                  <a class="page-link" aria-label="Previous">
+                      <span aria-hidden="true">&lt;</span>
+                  </a>
+              </li>
+              <li class="page-item"><a class="page-link">1</a></li>
+              <li class="page-item active"><a class="page-link">2</a></li>
+              <li class="page-item"><a class="page-link">3</a></li>
+              <li class="page-item">
+                  <a class="page-link" aria-label="Next">
+                      <span aria-hidden="true">&gt;</span>
+                  </a>
+              </li>
+              <li class="page-item">
+                  <a class="page-link" aria-label="Next">
+                      <span aria-hidden="true">&gt;&gt;</span>
+                  </a>
+              </li>
+          </ul>
+      </nav>
+  </div>
+  </div>
+
+    
+<div class="modal fade" bsModal #parentModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-nested-name1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #0b0f6e;">
+        <h4 id="dialog-nested-name1" class="modal-title pull-left" style="color: white;">รายละเอียดข่าวประชาสัมพันธ์</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-2">
+            <span style="color: #0b0f6e;">ชื่อเรื่อง</span><span style="color: red;">*</span>
+          </div>
+          <div class="col-10">
+            <input type="text" name="storyName" id="storyName" disabled style="width: 90%; height: 30px;" value="{{this.newsName}}">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-2">
+            <span class="mt-10" style="color: #0b0f6e;">เนื้อหา</span><span style="color: red;">*</span>
+          </div>
+          <div class="col">
+            <!-- <input type="file" name="storyName" id="storyName" disabled style="width: 90%; " value="ay"> -->
+            <textarea name="" id="" cols="100" rows="10" style="width: 90%; resize: none;"  disabled>
+              {{this.newsDetail}}
+            </textarea>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-2">
+            <span class="mt-10" style="color: #0b0f6e;">สถานะ</span>
+          </div>
+          <div class="col-2">
+            <div class="form-check form-switch">
+              <input class="form-check-input switch" type="checkbox" id="flexSwitchCheckDefault" [checked]="newsStatus" (click)="callUpdate(3,this.newsId,this.newsStatus)">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col" style="margin-left: 45%; padding: 0;">
+            <button type="button" class="btn" aria-label="Close" (click)="parentModal.hide()" style="background-color: #2c76ab; color: white; width: 80px;">
+              ปิด
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

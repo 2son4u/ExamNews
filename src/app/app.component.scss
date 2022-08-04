@@ -1,0 +1,92 @@
+.head-title {
+    color: #283692;
+}
+
+.pagination {
+    border: 1px solid #d5d6d6; 
+    background-color: white;
+}
+
+.paginationCurrentPage {
+    border: 1px solid #2a3893; 
+    background-color: white;
+    color: white;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
+
+  .form-switch .form-check-input {
+    height: 24px;
+    width: 48px;
+}
+.form-switch .form-check-input:focus {
+    border-color: rgba(0, 0, 0, 0.25);
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/></svg>");
+}
+.form-switch .form-check-input:checked {
+    background-color: #30D158;
+    border-color: #30D158;
+    border: none;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+}
+
+.icon-radius {
+    padding: 10px;
+    border-radius: 50%;   
+    cursor: pointer;
+    transition: .3s;
+}
+.icon-light-them {
+    color: black;
+}
+.icon-dark-them {
+    color: white;
+}
+.icon-light-blue {
+    background-color: #72d0e1;
+}
+.icon-light-blue:hover {
+    background-color: #5eabb8;
+}
+.icon-red {
+    background-color: rgb(176, 69, 69);
+}
+.icon-red:hover {
+    background-color: rgb(133, 53, 53);
+}
+.icon-hover-shadow:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.pagination .active a {
+    background-color: #100c6c !important;
+    border: 1px solid #100c6c;
+    color: white;
+}
+
+.pagination a {
+    color: #100c6c;
+}
+
+.select-data-count-btn {
+    height: 38px;
+    width: 100%;
+    border: 1px solid #d2d2d2;
+    background-color: white;
+    border-radius: 5px;
+    transition: .3s;
+}
+.select-data-count-btn:hover {
+    background-color:rgb(233, 233, 233) ;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
